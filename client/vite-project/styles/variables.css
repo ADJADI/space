@@ -1,0 +1,50 @@
+@font-face {
+  font-display: swap;
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./media/font/BarlowCondensed-Regular.ttf") format("truetype");
+
+  font-display: swap;
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./media/font/Barlow-Regular.ttf") format("truetype");
+
+  font-display: swap;
+  font-family: "Bellefair";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./media/font/Bellefair-Regular.ttf") format("truetype");
+}
+
+:root {
+  --white: #ffffff;
+  --light-blue: #d0d6f9;
+  --dark: #0b0d17;
+
+  --fontHeading: "Bellefair";
+  --fontSubHeading: "Barlow Condensed";
+  --fontBody: "Barlow";
+  
+  --headingXXL: 150px;
+  --headingXL: 100px;
+  --headingL: 56px;
+  --headingM: 32px;
+  --headingS: 25px;
+  --subHeadingBig: 28px;
+  --subHeadingSmall: 14px;
+  --navText: 16px;
+  --navTextSmall: 15px;
+  --bodyText: 18px;
+  --titleWeight: 300;
+  --headingSpace: 4.75px;
+  --subHeadingSpace: 2.35px;
+  --navTextSpace: 2.7px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

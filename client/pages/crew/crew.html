@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./crew.css" />
+    <link rel="stylesheet" href="../../styles/navStyle.css" />
+    <link rel="stylesheet" href="../../styles/variables.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <picture class="bg-crew-container">
+      <source
+        media="(min-width: 80rem)"
+        srcset="../../assets/crewImages/background-crew-desktop.jpg"
+      />
+      <source
+        media="(min-width: 48rem)"
+        srcset="../../assets/crewImages/background-crew-tablet.jpg"
+      />
+      <img src="../../assets/crewImages/background-crew-mobile.jpg" alt="" />
+    </picture>
+    <header>
+      <nav>
+        <button class="logo">
+          <img src="../../assets/shared/logo.svg" alt="" />
+        </button>
+        <button class="hamburger-btn" id="hamburger-btn">
+          <img src="../../assets/shared/icon-hamburger.svg" alt="" />
+        </button>
+        <button class="cross-btn" id="cross-btn">
+          <img src="../../assets/shared/icon-close.svg" alt="" />
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../../index.html">home</a></li>
+          <li><a href="../../pages/crew/crew.html">crew</a></li>
+          <li>
+            <a href="../../pages/destination/destination.html">destination</a>
+          </li>
+          <li>
+            <a href="../../pages/technology/technology.html ">technology</a>
+          </li>
+        </ul>
+        <ul class="nav-link" id="nav-link">
+          <li><a href="../../index.html">home</a></li>
+          <li><a href="../../pages/crew/crew.html">crew</a></li>
+          <li>
+            <a href="../../pages/destination/destination.html">destination</a>
+          </li>
+          <li>
+            <a href="../../pages/technology/technology.html ">technology</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="main-container">
+        <div class="title-container">
+          <span>02</span>
+          <h2>Meet your crew</h2>
+        </div>
+        <section class="my-crew-container">
+          <!-- my crew come here -->
+        </section>
+      </div>
+    </main>
+    <script src="./crew.js"></script>
+    <script src="../../index.js"></script>
+  </body>
+</html>

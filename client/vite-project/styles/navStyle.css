@@ -1,0 +1,142 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 0 32px 0 32px;
+}
+
+.bar {
+  display: none;
+}
+
+.nav-link a {
+  text-decoration: none !important;
+  color: white;
+}
+
+.nav-link {
+  display: none;
+}
+.hamburger-btn.active {
+  display: none;
+}
+.hamburger-btn {
+  display: block;
+}
+.cross-btn {
+  display: none;
+}
+.cross-btn.active {
+  display: block;
+}
+.nav-link {
+  display: none;
+}
+.nav-menu li {
+  margin-left: 20px;
+  list-style: none;
+}
+.nav-menu a {
+  font-size: var(--navText);
+  text-decoration: none;
+  display: flex;
+  letter-spacing: 0.18rem;
+  align-items: center;
+  font-family: "Barlow Condensed";
+  gap: 10px;
+  text-transform: uppercase;
+}
+
+.nav-menu span:nth-child(1) {
+  font-weight: bold;
+}
+.nav-menu.active {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-top: 100px;
+  gap: 20px;
+  width: 70%;
+  top: 0;
+  right: 0;
+  min-height: 100vh;
+  background-color: rgba(255, 255, 255, 0.034);
+  backdrop-filter: blur(40px);
+}
+.nav-menu {
+  display: none;
+}
+
+nav button {
+  z-index: 100 !important;
+  border: none;
+  background-color: transparent;
+}
+
+nav ul {
+  z-index: 3;
+}
+
+@media (min-width: 48rem) {
+  nav {
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+    padding: 0 100px 0 100px;
+    z-index: 1;
+  }
+  .nav-link a {
+    font-size: 14px;
+  }
+  .nav-link li {
+    list-style: none;
+  }
+  .hamburger-btn {
+    display: none;
+  }
+  .cross-btn {
+    display: none;
+  }
+  .cross-btn.active {
+    display: none;
+  }
+  .nav-menu.active {
+    display: none;
+  }
+}
+
+@media (min-width: 80rem) {
+  .bar {
+    display: block;
+    height: 0.5px;
+    width: 100%;
+    margin-left: 40px;
+    background-color: white;
+    opacity: 40%;
+    z-index: 1;
+  }
+
+  .nav-link {
+    backdrop-filter: blur(50px);
+  }
+
+  .nav-link::before {
+    content: "";
+    width: 52px;
+    height: 0.5px;
+    background-color: white;
+    opacity: 34%;
+    position: absolute;
+    left: 0;
+  }
+
+  /* main {
+    padding: 10rem;
+  } */
+}
