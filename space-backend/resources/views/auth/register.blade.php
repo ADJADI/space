@@ -1,112 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Admin - Register</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #121212;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        .register-card {
-            background-color: #1a1a1a;
-            border-radius: 10px;
-            padding: 2rem;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .register-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .register-header h1 {
-            font-weight: 700;
-            color: #ffffff;
-        }
-        .form-control {
-            background-color: #2a2a2a;
-            border: none;
-            color: white;
-            padding: 0.75rem;
-        }
-        .form-control:focus {
-            background-color: #333;
-            color: white;
-            box-shadow: none;
-        }
-        .btn-primary {
-            background-color: #0078FF;
-            border: none;
-            padding: 0.75rem;
-            font-weight: 600;
-            width: 100%;
-        }
-        .alert {
-            background-color: rgba(220, 53, 69, 0.2);
-            color: #ff6b6b;
-            border: none;
-        }
-        .login-link {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-        .login-link a {
-            color: #0078FF;
-            text-decoration: none;
-        }
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="register-card">
-        <div class="register-header">
-            <h1>SPACE ADMIN</h1>
-            <p>Create a new admin account</p>
+@extends('layouts.auth')
+
+@section('title', 'Space Admin - Register')
+@section('subtitle', 'Create a new admin account')
+
+@section('content')
+    <form method="POST" action="{{ route('register') }}" class="space-y-6">
+        @csrf
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
+            <input type="text" id="name" name="name" value="{{ old('name') }}" required autofocus
+                   class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
-
-        @if ($errors->any())
-            <div class="alert alert-danger mb-4">
-                <ul class="mb-0">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required autofocus>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <div class="mb-4">
-                <label for="password_confirmation" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
-
-        <div class="login-link">
-            <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
+        
+        <div>
+            <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+            <input type="email" id="email" name="email" value="{{ old('email') }}" required
+                   class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
+        
+        <div>
+            <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+            <input type="password" id="password" name="password" required
+                   class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        
+        <div>
+            <label for="password_confirmation" class="block text-sm font-medium text-gray-300">Confirm Password</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" required
+                   class="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        
+        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            Register
+        </button>
+    </form>
+    
+    <div class="mt-6 text-center">
+        <p class="text-sm text-gray-400">
+            Already have an account? <a href="{{ route('login') }}" class="text-blue-400 hover:text-blue-300">Login</a>
+        </p>
     </div>
-</body>
-</html> 
+@endsection 
