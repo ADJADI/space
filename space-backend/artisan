@@ -6,27 +6,45 @@ use Symfony\Component\Console\Input\ArgvInput;
 
 define('LARAVEL_START', microtime(true));
 
-// Register the Composer autoloader...
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| this application. We just need to utilize it! We'll simply require it
+| into the script here so we don't need to manually load our classes.
+|
+*/
+
 require __DIR__.'/vendor/autoload.php';
 
-// Bootstrap Laravel and handle the command...
-/** @var Application $app */
 $app = require_once __DIR__.'/bootstrap/app.php';
+
+/*
+|--------------------------------------------------------------------------
+| Run The Artisan Application
+|--------------------------------------------------------------------------
+|
+| When we run the console application, the current CLI command will be
+| executed in this console and the response sent back to a terminal
+| or another output device for the developers. Here goes nothing!
+|
+*/
 
 $status = $app->handleCommand(new ArgvInput);
 
 // Add db:monitor command for startup script to use
-if (isset($input) && $input->getFirstArgument() === 'db:monitor') {
+if (isset($argv) && count($argv) > 1 && $argv[1] === 'db:monitor') {
     try {
         $db = $app->make('db');
         $db->connection()->getPdo();
         echo "Database connection successful.\n";
+        exit(0);
     } catch (Exception $e) {
         echo "Database connection failed: " . $e->getMessage() . "\n";
         exit(1);
     }
 }
-
-$kernel->terminate($input, $status);
 
 exit($status);
