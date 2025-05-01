@@ -2,7 +2,7 @@
 builder = "nixpacks"
 providers = ["php", "node"]
 installCommand = "composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev && npm ci"
-buildCommand = "php artisan config:clear && php artisan migrate --force && npm run build"
+buildCommand = "php artisan config:clear && php artisan cache:clear && bash start.sh"
 
 [deploy]
 healthcheckPath = "/up"
