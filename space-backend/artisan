@@ -15,4 +15,18 @@ $app = require_once __DIR__.'/bootstrap/app.php';
 
 $status = $app->handleCommand(new ArgvInput);
 
+// Add db:monitor command for startup script to use
+if (isset($input) && $input->getFirstArgument() === 'db:monitor') {
+    try {
+        $db = $app->make('db');
+        $db->connection()->getPdo();
+        echo "Database connection successful.\n";
+    } catch (Exception $e) {
+        echo "Database connection failed: " . $e->getMessage() . "\n";
+        exit(1);
+    }
+}
+
+$kernel->terminate($input, $status);
+
 exit($status);
