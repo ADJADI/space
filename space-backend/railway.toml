@@ -5,9 +5,9 @@ installCommand = "composer install --no-interaction --prefer-dist --optimize-aut
 buildCommand = "php artisan config:clear && npm run build"
 
 [deploy]
-startCommand = "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
-healthcheckPath = "/up"
-healthcheckTimeout = 60
+startCommand = "php artisan optimize && php artisan serve --host=0.0.0.0 --port=$PORT"
+healthcheckPath = "/health"
+healthcheckTimeout = 90
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10
 
@@ -16,8 +16,8 @@ restartPolicyMaxRetries = 10
   envs = [
     "APP_NAME=Space",
     "APP_ENV=production",
-    "APP_DEBUG=false",
-    "LOG_LEVEL=error"
+    "APP_DEBUG=true",
+    "LOG_LEVEL=debug"
   ]
 
 [nixpacks]

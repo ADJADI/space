@@ -12,6 +12,11 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\WebAuthController;
 use Illuminate\Support\Facades\Route;
 
+// Health check route for Railway
+Route::get('/health', function () {
+    return response()->json(['status' => 'ok']);
+});
+
 // Auth Routes
 Route::middleware('guest')->group(function () {
     Route::get('/login', [WebAuthController::class, 'showLoginForm'])->name('login');
