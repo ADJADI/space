@@ -2,12 +2,12 @@
 builder = "nixpacks"
 providers = ["php", "node"]
 installCommand = "composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev && npm ci"
-buildCommand = "php artisan config:clear"
+buildCommand = "php artisan config:clear && npm run build && chmod +x wait-for-db.sh"
 
 [deploy]
-startCommand = "php artisan migrate --force --verbose || { echo 'Migration failed, showing error:'; cat storage/logs/laravel.log | tail -50; }; php artisan serve --host=0.0.0.0 --port=$PORT"
-healthcheckPath = "/up"
-healthcheckTimeout = 60
+startCommand = "./wait-for-db.sh && php artisan migrate --force || echo 'Migration failed but continuing'; php artisan serve --host=0.0.0.0 --port=$PORT"
+healthcheckPath = "/health"
+healthcheckTimeout = 90
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10
 
