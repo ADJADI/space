@@ -1,0 +1,25 @@
+{
+    "$schema": "https://railway.app/railway.schema.json",
+    "build": {
+        "builder": "nixpacks",
+        "providers": ["php", "node"],
+        "buildCommand": "composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev && npm ci && npm run build"
+    },
+    "deploy": {
+        "startCommand": "php artisan serve --host=0.0.0.0 --port=8000",
+        "healthcheckPath": "/db-test.php",
+        "healthcheckTimeout": 90,
+        "restartPolicyType": "on_failure",
+        "restartPolicyMaxRetries": 10,
+        "healthcheckMethod": "GET"
+    },
+    "variables": {
+        "APP_NAME": "Space",
+        "APP_ENV": "production",
+        "APP_DEBUG": "true",
+        "SESSION_DRIVER": "file",
+        "CACHE_STORE": "file",
+        "QUEUE_CONNECTION": "sync",
+        "LOG_CHANNEL": "stderr"
+    }
+}
