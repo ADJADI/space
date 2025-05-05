@@ -8,18 +8,12 @@ use Illuminate\Http\Request;
 
 class CrewMemberController extends Controller
 {
-    /**
-     * Display a listing of all crew members.
-     */
     public function index()
     {
         $crewMembers = CrewMember::all();
         return response()->json($crewMembers);
     }
 
-    /**
-     * Display the specified crew member.
-     */
     public function show($id)
     {
         $crewMember = CrewMember::findOrFail($id);

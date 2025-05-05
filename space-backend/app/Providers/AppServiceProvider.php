@@ -10,20 +10,15 @@ use PDO;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
+
     public function register(): void
     {
-        // If running in console mode, and not in production
         if ($this->app->runningInConsole() && $this->app->environment() !== 'production') {
             $this->createDatabaseIfNotExists();
         }
     }
 
-    /**
-     * Bootstrap any application services.
-     */
+
     public function boot()
     {
         if (env('APP_ENV') !== 'local') {
@@ -31,16 +26,13 @@ class AppServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * Create the database if it doesn't exist
-     */
+
     private function createDatabaseIfNotExists(): void
     {
         $connection = config('database.default');
         $database = config("database.connections.{$connection}.database");
 
         try {
-            // Try to connect without specifying a database
             $pdo = new PDO(
                 sprintf(
                     '%s:host=%s;port=%s;charset=%s',
@@ -54,7 +46,6 @@ class AppServiceProvider extends ServiceProvider
                 [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
             );
 
-            // Create the database if it doesn't exist
             $pdo->exec(sprintf(
                 'CREATE DATABASE IF NOT EXISTS `%s` CHARACTER SET %s COLLATE %s;',
                 $database,
@@ -62,8 +53,7 @@ class AppServiceProvider extends ServiceProvider
                 config("database.connections.{$connection}.collation", 'utf8mb4_unicode_ci')
             ));
         } catch (\Exception $e) {
-            // We'll log this silently - a more detailed error will be thrown
-            // by Laravel if the database truly cannot be accessed
+
         }
     }
 }

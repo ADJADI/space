@@ -10,26 +10,20 @@ use Illuminate\Support\Facades\Validator;
 
 class CrewMemberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $crewMembers = CrewMember::all();
         return view('admin.crew.index', compact('crewMembers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('admin.crew.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -48,7 +42,6 @@ class CrewMemberController extends Controller
 
         $data = $request->all();
         
-        // Handle file uploads
         if ($request->hasFile('srcm')) {
             $srcmPath = $request->file('srcm')->store('public/crew');
             $data['srcm'] = Storage::url($srcmPath);
@@ -70,25 +63,19 @@ class CrewMemberController extends Controller
             ->with('success', 'Crew member created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(CrewMember $crew)
     {
         return view('admin.crew.show', compact('crew'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(CrewMember $crew)
     {
         return view('admin.crew.edit', compact('crew'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, CrewMember $crew)
     {
         $validator = Validator::make($request->all(), [
@@ -107,9 +94,7 @@ class CrewMemberController extends Controller
 
         $data = $request->except(['srcm', 'srct', 'srcd']);
         
-        // Handle file uploads
         if ($request->hasFile('srcm')) {
-            // Delete old file if exists
             if ($crew->srcm) {
                 Storage::delete(str_replace('/storage', 'public', $crew->srcm));
             }
@@ -119,7 +104,6 @@ class CrewMemberController extends Controller
         }
         
         if ($request->hasFile('srct')) {
-            // Delete old file if exists
             if ($crew->srct) {
                 Storage::delete(str_replace('/storage', 'public', $crew->srct));
             }
@@ -129,7 +113,6 @@ class CrewMemberController extends Controller
         }
         
         if ($request->hasFile('srcd')) {
-            // Delete old file if exists
             if ($crew->srcd) {
                 Storage::delete(str_replace('/storage', 'public', $crew->srcd));
             }
@@ -144,12 +127,9 @@ class CrewMemberController extends Controller
             ->with('success', 'Crew member updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(CrewMember $crew)
     {
-        // Delete associated images
         if ($crew->srcm) {
             Storage::delete(str_replace('/storage', 'public', $crew->srcm));
         }

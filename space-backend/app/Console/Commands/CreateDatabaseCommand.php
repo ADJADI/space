@@ -20,10 +20,8 @@ class CreateDatabaseCommand extends Command
         try {
             $connection = config('database.default');
             
-            // Create database with default connection settings but without specifying a database
             $query = "CREATE DATABASE IF NOT EXISTS `$databaseName` CHARACTER SET $charset COLLATE $collation;";
             
-            // Connect without database name as we're creating it
             DB::connection($connection)
                 ->getPdo()
                 ->exec($query);

@@ -18,16 +18,13 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            // Not logged in
             return redirect()->route('login')->with('error', 'You must be logged in to access the admin area.');
         }
         
         if (Auth::user()->isAdmin()) {
-            // Admin user - allow access
             return $next($request);
         }
         
-        // Logged in but not admin
         Log::warning('Non-admin user attempted to access admin area', [
             'user_id' => Auth::id(),
             'email' => Auth::user()->email,

@@ -1,0 +1,40 @@
+/* Home page styles */
+.home-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.hero-section {
+  background-image: url('../assets/home/background-home-mobile.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 3rem 1rem;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.destination-section,
+.crew-section,
+.technology-section {
+  padding: 4rem 1rem;
+  color: white;
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+  .hero-section {
+    background-image: url('../assets/home/background-home-tablet.jpg');
+    padding: 5rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    background-image: url('../assets/home/background-home-desktop.jpg');
+    padding: 6rem 3rem;
+  }
+} 
